@@ -15,7 +15,8 @@ open System.Runtime.InteropServices
 /// Represents an HTML attribute. The name is always normalized to lowercase
 type HtmlAttribute =
 
-    internal | HtmlAttribute of name:string * value:string
+             | HtmlAttribute of name:string * value:string
+with
 
     /// <summary>
     /// Creates an html attribute
@@ -29,10 +30,11 @@ type HtmlAttribute =
 /// Represents an HTML node. The names of elements are always normalized to lowercase
 type HtmlNode =
 
-    internal | HtmlElement of name:string * attributes:HtmlAttribute list * elements:HtmlNode list
+             | HtmlElement of name:string * attributes:HtmlAttribute list * elements:HtmlNode list
              | HtmlText of content:string
              | HtmlComment of content:string
              | HtmlCData of content:string
+with
 
     /// <summary>
     /// Creates an html element
@@ -154,7 +156,8 @@ type HtmlNode =
 [<StructuredFormatDisplay("{_Print}")>]
 /// Represents an HTML document
 type HtmlDocument =
-    internal | HtmlDocument of docType:string * elements:HtmlNode list
+             | HtmlDocument of docType:string * elements:HtmlNode list
+with
 
     /// <summary>
     /// Creates an html document
@@ -203,7 +206,7 @@ module private TextParser =
 
 // --------------------------------------------------------------------------------------
 
-module internal HtmlParser =
+module HtmlParser =
 
     let wsRegex = lazy Regex("\\s+", RegexOptions.Compiled)
     let invalidTypeNameRegex = lazy Regex("[^0-9a-zA-Z_]+", RegexOptions.Compiled)
@@ -334,8 +337,8 @@ module internal HtmlParser =
                | "pre" | "code" -> true
                | _ -> false
 
-        member x.IsScriptTag 
-            with get() = 
+        member x.IsScriptTag
+            with get() =
                match x.CurrentTagName().Trim().ToLower() with
                | "script" | "style" -> true
                | _ -> false
@@ -565,11 +568,11 @@ module internal HtmlParser =
             | '>' when state.IsScriptTag -> state.Pop(); state.EmitTag(true);
             | TextParser.Letter _ -> state.ConsTag(); scriptEndTagName state
             | _ ->
-                state.Cons([|'<'; '/'|]); 
-                state.Cons(state.CurrentTagName()); 
+                state.Cons([|'<'; '/'|]);
+                state.Cons(state.CurrentTagName());
                 (!state.CurrentTag).Clear()
                 script state
-        and charRef state = 
+        and charRef state =
             match state.Peek() with
             | ';' -> state.Cons(); state.Emit()
             | '<' -> state.Emit()
