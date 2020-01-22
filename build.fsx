@@ -147,7 +147,8 @@ let testProjs =
       "tests/FSharp.Data.Reference.Tests/FSharp.Data.Reference.Tests.fsproj"  ]
 
 let buildProjs =
-    [ "src/FSharp.Data.DesignTime/FSharp.Data.DesignTime.fsproj"
+    [ //"src/FSharp.Data.DesignTime/FSharp.Data.DesignTime.fsproj"
+      "src/FSharp.Data.Html/FSharp.Data.Html.fsproj"
       "src/FSharp.Data/FSharp.Data.fsproj" ]
 
 let setSdkPathAndVerbose (c: DotNet.Options) =
