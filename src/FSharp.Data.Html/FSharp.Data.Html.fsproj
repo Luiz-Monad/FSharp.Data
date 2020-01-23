@@ -20,8 +20,6 @@
     <Compile Include="..\Html\HtmlParser.fs" />
     <Compile Include="..\Html\HtmlOperations.fs" />
     <Compile Include="..\Html\HtmlCssSelectors.fs" />
-    <Compile Include="..\Html\HtmlActivePatterns.fs" />
-    <Compile Include="..\Runtime.fs" />
     <Compile Include="..\AssemblyInfo.fs" />
   </ItemGroup>
   <ItemGroup>

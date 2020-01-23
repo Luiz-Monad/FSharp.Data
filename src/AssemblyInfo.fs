@@ -2,16 +2,16 @@
 namespace System
 open System.Reflection
 
-[<assembly: AssemblyTitleAttribute("FSharp.Data")>]
-[<assembly: AssemblyProductAttribute("FSharp.Data")>]
-[<assembly: AssemblyDescriptionAttribute("Library of F# type providers and data access tools")>]
+[<assembly: AssemblyTitleAttribute("FSharp.Data.Html")>]
+[<assembly: AssemblyProductAttribute("MonadicSoftware.FSharp.Data.Html")>]
+[<assembly: AssemblyDescriptionAttribute("Library of F# HTML parsing")>]
 [<assembly: AssemblyVersionAttribute("3.3.4.0")>]
 [<assembly: AssemblyFileVersionAttribute("3.3.4.0")>]
 do ()
 
 module internal AssemblyVersionInformation =
-    let [<Literal>] AssemblyTitle = "FSharp.Data"
-    let [<Literal>] AssemblyProduct = "FSharp.Data"
-    let [<Literal>] AssemblyDescription = "Library of F# type providers and data access tools"
+    let [<Literal>] AssemblyTitle = "FSharp.Data.Html"
+    let [<Literal>] AssemblyProduct = "MonadicSoftware.FSharp.Data.Html"
+    let [<Literal>] AssemblyDescription = "Library of F# HTML parsing"
     let [<Literal>] AssemblyVersion = "3.3.4.0"
     let [<Literal>] AssemblyFileVersion = "3.3.4.0"

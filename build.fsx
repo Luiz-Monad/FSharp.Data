@@ -23,17 +23,15 @@ let (!!) includes = (!! includes).SetBaseDirectory __SOURCE_DIRECTORY__
 // Information about the project to be used at NuGet and in AssemblyInfo files
 // --------------------------------------------------------------------------------------
 
-let project = "FSharp.Data"
+let project = "MonadicSoftware.FSharp.Data.Html"
 let authors = ["Tomas Petricek"; "Gustavo Guerra"; "Colin Bull"]
-let summary = "Library of F# type providers and data access tools"
+let summary = "Library of F# HTML parsing"
 let description = """
-  The F# Data library (FSharp.Data.dll) implements everything you need to access data
-  in your F# applications and scripts. It implements F# type providers for working with
-  structured file formats (CSV, HTML, JSON and XML) and for accessing the WorldBank data.
-  It also includes helpers for parsing CSV, HTML and JSON files and for sending HTTP requests."""
-let tags = "F# fsharp data typeprovider WorldBank CSV HTML CSS JSON XML HTTP linqpad-samples"
+  The F# HTML library (FSharp.Data.Html.dll) implements everything you need to parse HTML
+  in your F# applications and scripts."""
+let tags = "F# fsharp HTML parser"
 
-let gitOwner = "fsharp"
+let gitOwner = "Luiz-Monad"
 let gitHome = "https://github.com/" + gitOwner
 let gitName = "FSharp.Data"
 
@@ -101,7 +99,7 @@ Target.create "AssemblyInfo" <| fun _ ->
         let replace (oldValue:string) newValue (str:string) = str.Replace(oldValue, newValue)
         let title =
             Path.GetFileNameWithoutExtension file
-            |> replace "AssemblyInfo" "FSharp.Data"
+            |> replace "AssemblyInfo" "FSharp.Data.Html"
         let versionSuffix =".0"
         let version = release.AssemblyVersion + versionSuffix
         AssemblyInfoFile.createFSharp file
@@ -148,8 +146,8 @@ let testProjs =
 
 let buildProjs =
     [ //"src/FSharp.Data.DesignTime/FSharp.Data.DesignTime.fsproj"
-      "src/FSharp.Data.Html/FSharp.Data.Html.fsproj"
-      "src/FSharp.Data/FSharp.Data.fsproj" ]
+      //"src/FSharp.Data/FSharp.Data.fsproj"
+      "src/FSharp.Data.Html/FSharp.Data.Html.fsproj" ]
 
 let setSdkPathAndVerbose (c: DotNet.Options) =
   { c with
@@ -198,7 +196,7 @@ Target.create "NuGet" <| fun _ ->
             AccessKey = Environment.environVarOrDefault "nugetkey" ""
             Publish = Environment.hasEnvironVar "nugetkey"
             Dependencies = [] })
-        "nuget/FSharp.Data.nuspec"
+        "nuget/FSharp.Data.Html.nuspec"
 
 // --------------------------------------------------------------------------------------
 // Generate the documentation
